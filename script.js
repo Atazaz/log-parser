@@ -38,6 +38,10 @@ $(document).ready(() => {
         rowNum = -1;
         parse(allText);
     })
+
+    $('#clear').click(function() {
+        $('#table').empty();
+    })
 })
 
 function makeLogs(allText) {
