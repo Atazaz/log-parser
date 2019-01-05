@@ -10,7 +10,7 @@ h2 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#submit, #clear {
+#submit, #clear, #file {
     background-color: #cad6e0; 
     border: 1px solid black;
     padding: 15px 32px;
@@ -44,6 +44,10 @@ tr {
 
 th, td { 
     display: block; 
+}
+
+#features {
+    white-space:pre;
 }
 
 #output { 
