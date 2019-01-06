@@ -22,7 +22,7 @@ $(document).ready(() => {
         // empty table 
         $('#table').empty();
         $('#table').append('<tr class="titles"> <th>Management IP</th> <th>DNS IP</th><th>Product</th> <th>Model Number</th>'+ 
-        '<th>Version</th> <th>Serial Number</th> <th>Features</th>  <th>NTP Server</th> </tr>');
+        '<th>Version</th> <th>Serial Number</th> <th id="features">Features<br>(first 8)<br><br><br><br><br><br><br></th>  <th>NTP Server</th> </tr>');
 
          var file = document.getElementById('file').files[0];
          if (file) {
@@ -138,11 +138,15 @@ function parse(txt, xml) {
     // 8 - 15 are the lines i want! 
     var allFeatures = "";
     for (let j = 8; j < 16; j++) {
-        allFeatures += diffSplit[j] + '\n';
+        if (diffSplit[j]==null) {
+            allFeatures+=""+'\n';
+        } else {
+            allFeatures += diffSplit[j] + '\n';
+        }
     }
     thisRow.append('<td id="features">'+allFeatures+'</td>');
 
-    // NTP Server
+// NTP Server
     var ntp_server = $(xml).find("ntp_server");
     //console.log(ntp_server);
     thisRow.append('<td>'+$(ntp_server[0]).text()+'</td>');
