@@ -22,7 +22,8 @@ $(document).ready(() => {
         // empty table 
         $('#table').empty();
         $('#table').append('<tr class="titles"> <th>Management IP</th> <th>DNS IP</th><th>Product</th> <th>Model Number</th>'+ 
-        '<th>Version</th> <th>Serial Number</th> <th id="features">Features<br>(first 8)<br><br><br><br><br><br><br></th>  <th>NTP Server</th> <th>IPv4_Gateway</th> </tr>');
+        '<th>Version</th> <th>Serial Number</th> <th id="features">Features<br>(first 8)<br><br><br><br><br><br><br></th>'+
+         '<th>NTP Server</th> <th>IPv4_Gateway</th>  <th>Host Name</th> </tr>');
 
          var file = document.getElementById('file').files[0];
          if (file) {
@@ -155,7 +156,12 @@ function parse(txt, xml) {
     var routing_table_defaultrouter = $(xml).find("routing_table_defaultrouter");
     //console.log(ntp_server);
     thisRow.append('<td>'+$(routing_table_defaultrouter[0]).text()+'</td>');
-    
+
+    // Host Name
+    var hostname = $(xml).find("hostname");
+    //console.log(ntp_server);
+    thisRow.append('<td>'+$(hostname[0]).text()+'</td>');
+
     // ADD YOUR OWN STUFF HERE 
 
 }
